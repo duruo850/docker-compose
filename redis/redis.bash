@@ -8,7 +8,7 @@ fi
 
 
 run_without_volume() { # 没有volume的启动方式
-	echo "run without volume
+	echo "run without volume"
 
 	docker run --name redis -d --restart=always -p 6379:6379 -e REDIS_PASSWORD='rdspwd11131456' duruo850/redis:5.0.1-alpine3.8
 }
