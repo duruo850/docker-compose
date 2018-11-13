@@ -42,7 +42,7 @@ rm_containers() { # 删除容器
 
 	docker container prune -f
 
-	rm -rf /srv/mysql /srv/mysql
+	rm -rf /srv/redis /srv/redis
 }
 		
 		
