@@ -8,12 +8,16 @@ fi
 
 
 run_without_volume() { # 没有volume的启动方式
+	echo "run without volume
 	
-	docker run  --name=mysql -d -p 3306:3306  --restart always  -e MYSQL_ROOT_PASSWORD=123456 -e MYSQL_ROOT_HOST=% mysql/mysql-server:5.7.24
+	docker run  --name=mysql -d -p 3306:3306  --restart always \
+		-e MYSQL_ROOT_PASSWORD=123456 -e MYSQL_ROOT_HOST=% \
+		mysql/mysql-server:5.7.24
 }
 
 
 run_with_volume() { # volume的启动方式
+	echo "run with volume"
 	
 	docker create --name=mysqlcopy mysql/mysql-server:5.7.24
 		
@@ -33,10 +37,14 @@ run_with_volume() { # volume的启动方式
 }
 
 
-rm() { # 删除容器
+rm_containers() { # 删除容器
+	echo "rm_containers"
 
-	docker stop mysql
-	docker rm mysql
+	docker ps | grep mysql/mysql-server | awk '{print $1}' | xargs docker stop
+
+	docker container prune -f
+
+	rm -rf /srv/mysql /srv/mysql
 }
 		
 		
@@ -49,7 +57,7 @@ run_without_volume)
     run_without_volume
 ;;
 rm)
-    rm
+    rm_containers
 ;;
 esac
 exit 0
