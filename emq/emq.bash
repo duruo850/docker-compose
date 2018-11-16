@@ -3,7 +3,7 @@
 
 
 if [ $# -lt 1 ] ; then
-    cmd=run_with_volume
+    cmd=docker_run_simple
 else
     cmd=$1
 fi
@@ -29,7 +29,7 @@ docker_run_auth() { # 授权检查，带dashboard + 登录auth + acl访问auth
 }
 
 docker_compose() { # docker compose启动
-    docker-compose up -f docker-compose.yml -d emq
+    docker-compose -f docker-compose.yml up  -d emq
 }
 
 
@@ -38,7 +38,13 @@ rm_containers() { # 删除容器
 
 	docker ps | grep duruo850/emq | awk '{print $1}' | xargs docker stop
 
-	docker container prune -f
+	docker ps -a | grep duruo850/emq | awk '{print $1}' | xargs docker rm -v
+
+	docker ps | grep emq | awk '{print $1}' | xargs docker stop
+
+	docker ps -a | grep emq | awk '{print $1}' | xargs docker rm -v
+
+	docker image rm emq
 }
 
 
