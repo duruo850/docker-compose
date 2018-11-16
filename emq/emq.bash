@@ -12,7 +12,6 @@ fi
 docker_run_simple() { # 简单的启动，只带dashboard
     docker run -d --name emq    \
         -p 1883:1883  -p 8080:8080 -p 8083-8084:8083-8084 -p 8883:8883 -p 18083:18083  -p 4369:4369 -p 6000-6100:6000-6100 \
-        -e EMQ_LOADED_PLUGINS="emq_dashboard"   \
         duruo850/emq:2.3.11
 
 }
