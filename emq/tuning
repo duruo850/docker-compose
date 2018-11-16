@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # 内核优化需要在宿主机上做，在docker内部只能优化部分：https://www.jianshu.com/p/cb1c9945a43d
 # http://www.emqtt.com/docs/v3/tune.html

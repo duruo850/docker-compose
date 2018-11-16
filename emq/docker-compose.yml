@@ -1,23 +1,22 @@
 version: "3"
 services:
     emqt:
-        image: duruo850/emq:2.3.11
+        build: ./
+        image: emq
         container_name: emq
         restart: always
         environment:
-            - EMQ_NAME="emq"
-            - EMQ_LOADED_PLUGINS="emq_auth_http,emq_auth_username"
-            - EMQ_AUTH__HTTP__AUTH-REQ="http://127.0.0.1:8991/mqtt/auth"
+            - EMQ_LOADED_PLUGINS="emq_dashboard,emq_auth_http"
         logging:
             driver: "json-file"
             options:
                 max-size: "200m"
                 max-file: "10"
-        volumes:
-            - `pwd`/emq.conf:/opt/emqttd/etc/emq.conf
         ports:
             - "0.0.0.0:1883:1883"
             - "0.0.0.0:8083:8083"
             - "0.0.0.0:8084:8084"
             - "0.0.0.0:8883:8883"
             - "0.0.0.0:18083:18083"
+            - "0.0.0.0:4369:4369"
+            - "0.0.0.0:6000-6100:6000-6100"
