@@ -29,7 +29,7 @@ docker_run_auth() { # 授权检查，带dashboard + 登录auth + acl访问auth
 }
 
 docker_compose() { # docker compose启动
-    docker-compose up -f docker-compose.yml -d
+    docker-compose up -f docker-compose.yml -d emq
 }
 
 

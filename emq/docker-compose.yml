@@ -1,6 +1,6 @@
 version: "3"
 services:
-    emqt:
+    emq:
         build: ./
         image: emq
         container_name: emq
