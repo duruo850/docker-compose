@@ -19,6 +19,7 @@ docker_run_simple() { # 简单的启动，只带dashboard
 
 docker_run_auth() { # 授权检查，带dashboard + 登录auth + acl访问auth
     # 开启后台管理系统 + http授权
+    # 管理后台是可以配置auth_http的，不过auth_req和acl_req都需要同时配置，如果只想配置auth_req，必须修改配置文件
     docker run -d --name emq    \
         -p 1883:1883  -p 8080:8080 -p 8083-8084:8083-8084 -p 8883:8883 -p 18083:18083  -p 4369:4369 -p 6000-6100:6000-6100 \
        -e EMQ_LOADED_PLUGINS="emq_dashboard,emq_auth_http"   \
