@@ -15,6 +15,7 @@ run_without_volume() { # 没有volume的启动方式
 
 
 run_with_volume() { # volume的启动方式
+	# 注意需要取消root对/srv/redis目录的使用
 	echo "run with volume"
 	
 	docker create --name=rediscopy duruo850/redis:5.0.1-alpine3.8
