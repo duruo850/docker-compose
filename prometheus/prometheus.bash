@@ -23,6 +23,8 @@ run_with_volume() { # volume的启动方式
 
 	mkdir -p /srv/prometheus/config /srv/prometheus/data
 
+	chown -R 777 /srv/prometheus
+
 	docker cp prometheuscopy:/etc/prometheus/prometheus.yml /etc/prometheus/prometheus.yml
 
 	docker rm prometheuscopy

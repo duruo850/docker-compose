@@ -24,6 +24,8 @@ run_with_volume() { # volume的启动方式
 
 	mkdir -p /srv/redis/config /srv/redis/data
 
+	chown -R 777 /srv/redis
+
 	docker cp rediscopy:/usr/local/bin/redis.conf /srv/redis/config/
 
 	docker rm rediscopy

@@ -16,6 +16,7 @@ run_without_volume() { # 没有volume的启动方式
 
 run_with_volume() { # volume的启动方式
 	echo "run with volume"
+	run_without_volume
 }
 
 

@@ -25,6 +25,8 @@ run_with_volume() { # volume的启动方式
 
 	mkdir -p /srv/mysql/config /srv/mysql/data
 
+	chown -R 777 /srv/mysql
+
 	docker cp mysqlcopy:/etc/my.cnf /srv/mysql/config/
 
 	docker rm mysqlcopy
