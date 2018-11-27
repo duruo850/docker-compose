@@ -5,7 +5,7 @@ Created on 2018-11-27
 @author: Jay
 """
 import argparse
-from gevent import subprocess
+import subprocess
 
 
 def do_cmd(cmd):
