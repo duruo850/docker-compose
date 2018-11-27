@@ -74,7 +74,7 @@ class IService:
 if __name__ == "__main__":
     p = argparse.ArgumentParser()
     p.add_argument('command', type=str, help="support this command: start/stop/clear")
-    p.add_argument('--consul_url', type=str, default="192.168.1.136:8500", help="consul host url", required=True)
+    p.add_argument('--consul_url', type=str, default="192.168.1.136:8500", help="consul host url", required=False)
     p.add_argument('--name', type=str, default="gateway", help="service name", required=False)
     p.add_argument('--volume', type=str, default="disable",
                    help="whether to enable the volume, enable/disable", required=False)
