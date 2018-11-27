@@ -29,6 +29,16 @@ class IService:
         """
         self.args = args
 
+    def build(self):
+        """
+        构建镜像
+        :return:
+        """
+        assert self.args.dockerfile_path
+        print("build")
+        do_cmd("cd %s" % self.args.dockerfile_path)
+        do_cmd("""docker build -t duruo850/gateway:1.0.0 --no-cache . """)
+
     def start(self):
         """
         开始服务
@@ -80,6 +90,7 @@ if __name__ == "__main__":
                    help="whether to enable the volume, enable/disable", required=False)
     p.add_argument('--domain', type=str, default="",  help="domain for certs generator", required=False)
     p.add_argument('--email', type=str, default="", help="email for certs generator", required=False)
+    p.add_argument('--dockerfile_path', type=str, default="", help="the path for the dockerfile", required=False)
 
     pargs = p.parse_args()
     print("pargs,", pargs)
