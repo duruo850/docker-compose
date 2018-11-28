@@ -4,6 +4,7 @@
 Created on 2018-11-27
 @author: Jay
 """
+import os
 import argparse
 import subprocess
 
@@ -36,7 +37,7 @@ class IService:
         """
         assert self.args.dockerfile_path
         print("build")
-        do_cmd("cd %s" % self.args.dockerfile_path)
+        os.chdir(self.args.dockerfile_path)
         do_cmd("""docker build -t duruo850/gateway:1.0.0 --no-cache . """)
 
     def start(self):
